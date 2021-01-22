@@ -32,6 +32,7 @@ fi
 
 #Get device names
 devices=($(adb devices | grep -oP "\K([^ ]+)(?=\sdevice(\W|$))"))
+#adb devices -l | grep -oP "\K([^ ]+)(?=\sdevice(\W|$))" | sed 's/.*model:\s*//'
 echo "Devices found: ${#devices[@]}"
 
 #Create capabilities json configs
@@ -40,15 +41,16 @@ function create_capabilities() {
   for name in ${devices[@]}; do
     os_version="$(adb -s $name shell getprop ro.build.version.release | tr -d '\r')"
     serial_number="$(adb -s $name shell getprop ro.serialno | tr -d '\r')"
+    deviceName="$(adb -s $name shell getprop ro.config.marketing_name | tr -d '\r')"
     capabilities+=$(cat <<_EOF
 {
     "platform": "$PLATFORM_NAME",
     "platformName": "$PLATFORM_NAME",
-    "version": "$os_version",
+    "deviceOSVersion": "$os_version",
     "browserName": "$BROWSER_NAME",
-    "deviceName": "$name",
+    "deviceName": "$deviceName",
     "maxInstances": 1,
-    "applicationName": "$serial_number"
+    "serial_number": "$serial_number"
   }
 _EOF
     )
