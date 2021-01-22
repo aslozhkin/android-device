@@ -65,8 +65,8 @@ ENV JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre" \
 # Install Android SDK
 #=====================
 ARG SDK_VERSION=sdk-tools-linux-3859397
-ARG ANDROID_BUILD_TOOLS_VERSION=26.0.0
-ARG ANDROID_PLATFORM_VERSION="android-25"
+ARG ANDROID_BUILD_TOOLS_VERSION=29.0.3
+ARG ANDROID_PLATFORM_VERSION="android-29"
 
 ENV SDK_VERSION=$SDK_VERSION \
     ANDROID_BUILD_TOOLS_VERSION=$ANDROID_BUILD_TOOLS_VERSION \
@@ -92,14 +92,14 @@ ENV PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools
 # Install latest nodejs, npm, appium
 # Using this workaround to install Appium -> https://github.com/appium/appium/issues/10020 -> Please remove this workaround asap
 #====================================
-ARG APPIUM_VERSION=1.20.0
-ENV APPIUM_VERSION=$APPIUM_VERSION
+ARG APPIUM_VERSION=1.7.0-beta
+ENV APPIUM_VERSION=1.20.0
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
     apt-get -qqy install nodejs && \
     npm install -g appium@${APPIUM_VERSION} --unsafe-perm=true --allow-root && \
     exit 0 && \
-    npm cache clean && \
+    npm cache clean --force && \
     apt-get remove --purge -y npm && \
     apt-get autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \

@@ -76,7 +76,8 @@ nodeconfig=$(cat <<_EOF
     "register": true,
     "registerCycle": 5000,
     "hubHost": "$SELENIUM_HOST",
-    "hubPort": $SELENIUM_PORT
+    "hubPort": $SELENIUM_PORT,
+    "custom": {}
   }
 }
 _EOF
