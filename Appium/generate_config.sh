@@ -50,7 +50,7 @@ function create_capabilities() {
     "browserName": "$BROWSER_NAME",
     "deviceName": "$deviceName",
     "maxInstances": 1,
-    "UDID": "$UDID"
+    "udid": "$UDID"
   }
 _EOF
     )
