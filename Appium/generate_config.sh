@@ -77,7 +77,8 @@ nodeconfig=$(cat <<_EOF
     "registerCycle": 5000,
     "hubHost": "$SELENIUM_HOST",
     "hubPort": $SELENIUM_PORT,
-    "custom": {}
+    "custom": {},
+    "servlet": "org.openqa.grid.web.servlet.LifecycleServlet"
   }
 }
 _EOF
