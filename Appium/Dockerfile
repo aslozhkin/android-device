@@ -162,6 +162,6 @@ ENV PATH $PATH:/opt/platform-tools
 #========================================
 CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
 # Kill adb before start nodeamon
-RUN adb kill-server
+#RUN adb kill-server
 # Start the server by default
-CMD ["adb", "-a", "-P", "5037", "server", "nodaemon"]
+#CMD ["adb", "-a", "-P", "5037", "server", "nodaemon"]
