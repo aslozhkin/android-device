@@ -41,7 +41,7 @@ function create_capabilities() {
     os_version="$(adb -s $name shell getprop ro.build.version.release | tr -d '\r')"
     UDID="$(adb -s $name shell getprop ro.serialno | tr -d '\r')"
     deviceName="$(adb devices -l | grep -oP "\K([^ ]+)(?=\sdevice(\W|$))" | sed 's/.*model:\s*//')"
-    resolution="$(adb shell wm size | grep -P '\d+x\d+')"
+    resolution="$(adb shell wm size | sed 's/Physical size: //g')"
     capabilities+=$(cat <<_EOF
 {
     "platform": "$PLATFORM_NAME",
