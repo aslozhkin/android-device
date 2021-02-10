@@ -143,25 +143,8 @@ RUN chmod +x /root/entry_point.sh && \
     chmod +x /root/generate_config.sh && \
     chmod +x /root/wireless_connect.sh && \
     chmod +x /root/wireless_autoconnect.sh
-    
-# Set up insecure default key
-ADD files/insecure_shared_adbkey /root/.android/adbkey
-ADD files/insecure_shared_adbkey.pub /root/.android/adbkey.pub
-ADD files/update-platform-tools.sh /usr/local/bin/update-platform-tools.sh
-
-RUN /usr/local/bin/update-platform-tools.sh
-    
-# Expose default ADB port
-EXPOSE 5037
-
-# Set up PATH
-ENV PATH $PATH:/opt/platform-tools
 
 #========================================
 # Run xvfb and appium server
 #========================================
 CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
-# Kill adb before start nodeamon
-#RUN adb kill-server
-# Start the server by default
-#CMD ["adb", "-a", "-P", "5037", "server", "nodaemon"]
