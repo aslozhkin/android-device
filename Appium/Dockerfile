@@ -137,8 +137,6 @@ COPY entry_point.sh \
      generate_config.sh \
      wireless_connect.sh \
      wireless_autoconnect.sh \
-     selenium_grid/mcloud-grid-1.0.jar \
-     selenium_grid/mcloud-grid-jar-with-dependencies.jar \
      /root/
 
 RUN chmod +x /root/entry_point.sh && \
