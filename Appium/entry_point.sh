@@ -48,6 +48,4 @@ fi
 pkill -x xvfb-run
 rm -rf /tmp/.X99-lock
 
-node rest-koa.js
-
 $CMD

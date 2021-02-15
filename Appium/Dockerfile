@@ -154,4 +154,4 @@ RUN chmod +x /root/entry_point.sh && \
 #========================================
 # Run xvfb and appium server
 #========================================
-CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
+CMD /root/wireless_autoconnect.sh && /root/entry_point.sh && node rest-koa.js
