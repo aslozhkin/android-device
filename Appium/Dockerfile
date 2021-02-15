@@ -143,16 +143,18 @@ COPY entry_point.sh \
      wireless_autoconnect.sh \
      rest-koa.js \
      enable-wifi.sh \
+     koa_service.sh \
      /root/
 
 RUN chmod +x /root/entry_point.sh && \
     chmod +x /root/generate_config.sh && \
     chmod +x /root/wireless_connect.sh && \
     chmod +x /root/wireless_autoconnect.sh && \
-    chmod +x /root/enable-wifi.sh
+    chmod +x /root/enable-wifi.sh && \
+    chmod +x /root/rest-koa.js && \
+    chmod +x /root/koa_service.sh
 
 #========================================
 # Run xvfb and appium server
 #========================================
-RUN node /root/rest-koa.js &
-CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
+CMD /root/wireless_autoconnect.sh && /root/entry_point.sh && /root/koa_service.sh
