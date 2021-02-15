@@ -3,7 +3,7 @@
 NODE_CONFIG_JSON="/root/nodeconfig.json"
 DEFAULT_CAPABILITIES_JSON="/root/defaultcapabilities.json"
 APPIUM_LOG="/var/log/appium.log"
-CMD="xvfb-run appium --log $APPIUM_LOG"
+CMD="xvfb-run appium --log $APPIUM_LOG && node rest-koa.js"
 
 if [ ! -z "${SALT_MASTER}" ]; then
     echo "[INIT] ENV SALT_MASTER it not empty, salt-minion will be prepared"
