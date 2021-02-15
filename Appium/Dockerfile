@@ -132,7 +132,7 @@ EXPOSE 4723
 EXPOSE 4567
 EXPOSE 5037
 # port 33333 for rest-koa.js
-EXPOSE 33333
+EXPOSE 3333
 
 #====================================================
 # Scripts to run appium and connect to Selenium Grid

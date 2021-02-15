@@ -8,4 +8,4 @@ app.use(ctx => {
   shell.exec('./enable-wifi.sh')
 });
 
-app.listen(33333);
+app.listen(3333);
