@@ -104,8 +104,6 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
     apt-get autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean
-    
-RUN npm install koa
 
 #================================
 # APPIUM Test Distribution (ATD)
@@ -141,7 +139,8 @@ COPY entry_point.sh \
      wireless_connect.sh \
      wireless_autoconnect.sh \
      enable-wifi.sh \
-     rest-koa.js \
+     restana.js \
+     start.sh \
      /root/
 
 RUN chmod +x /root/entry_point.sh && \
@@ -149,9 +148,13 @@ RUN chmod +x /root/entry_point.sh && \
     chmod +x /root/wireless_connect.sh && \
     chmod +x /root/wireless_autoconnect.sh && \
     chmod +x /root/enable-wifi.sh && \
-    chmod +x /root/rest-koa.js
+    chmod +x /root/start.sh
+    
+RUN npm i restana --save
+
 
 #========================================
 # Run xvfb and appium server
 #========================================
-CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
+#CMD /root/wireless_autoconnect.sh && /root/entry_point.sh
+CMD /root/start.sh
