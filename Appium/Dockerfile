@@ -104,6 +104,8 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
     apt-get autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get clean
+    
+RUN npm install koa
 
 #================================
 # APPIUM Test Distribution (ATD)
@@ -129,6 +131,7 @@ RUN echo "${TZ}" > /etc/timezone
 EXPOSE 4723
 EXPOSE 4567
 EXPOSE 5037
+EXPOSE 3333
 
 #====================================================
 # Scripts to run appium and connect to Selenium Grid
@@ -137,12 +140,16 @@ COPY entry_point.sh \
      generate_config.sh \
      wireless_connect.sh \
      wireless_autoconnect.sh \
+     enable-wifi.sh \
+     rest-koa.js \
      /root/
 
 RUN chmod +x /root/entry_point.sh && \
     chmod +x /root/generate_config.sh && \
     chmod +x /root/wireless_connect.sh && \
-    chmod +x /root/wireless_autoconnect.sh
+    chmod +x /root/wireless_autoconnect.sh && \
+    chmod +x /root/enable-wifi.sh && \
+    chmod +x /root/rest-koa.js
 
 #========================================
 # Run xvfb and appium server
