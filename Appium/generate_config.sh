@@ -70,7 +70,7 @@ nodeconfig=$(cat <<_EOF
   "configuration": {
     "cleanUpCycle": 2000,
     "timeout": $NODE_TIMEOUT,
-    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "proxy": "ru.lanit.at.proxy.MobileRemoteProxy",
     "url": "http://$APPIUM_HOST:$APPIUM_PORT/wd/hub",
     "host": "$APPIUM_HOST",
     "port": $APPIUM_PORT,
