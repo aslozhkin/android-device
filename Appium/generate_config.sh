@@ -38,7 +38,7 @@ echo "Devices found: ${#devices[@]}"
 function create_capabilities() {
   capabilities=""
   for name in ${devices[@]}; do
-    os_version="$(adb -s $name shell getprop ro.build.version.release | tr -d '\r')"
+    os_version="$(adb -s $name shell getprop ro.build.version.release | tr -d '\r' | awk -F'.' '{printf "%s.%s", $1,$2}')"
     UDID="$(adb -s $name shell getprop ro.serialno | tr -d '\r')"
     deviceName="$(adb devices -l | grep -oP "\K([^ ]+)(?=\sdevice(\W|$))" | sed 's/.*model:\s*//')"
     resolution="$(adb shell wm size | sed 's/Physical size: //g')"
